@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.dogifykmmcompose.ui.theme.DogifyKmmComposeTheme
+import com.example.shared.ServiceLocator
 import com.example.shared.domain.DogBreed
 import com.example.shared.responsemodel.DogServiceKtor
 import com.google.accompanist.coil.rememberCoilPainter
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
             DogifyKmmComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    val viewModel: MainViewModel by viewModels { MainViewModel.Factory(DogServiceKtor()) }
+                    val viewModel: MainViewModel by viewModels { MainViewModel.Factory(ServiceLocator.dogService) }
                     val screenData: MainScreenData by viewModel.mainScreenData.observeAsState(
                         MainScreenData(
                             emptyList(),
